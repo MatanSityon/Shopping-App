@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph"
+    app:startDestination="@id/loginScreen">
+
+    <fragment
+        android:id="@+id/loginScreen"
+        android:name="com.example.shoppingapp.fragments.LoginFragment"
+        android:label="LoginScreen" >
+        <action
+            android:id="@+id/action_loginScreen_to_shoppingScreen"
+            app:destination="@id/shoppingScreen" />
+        <action
+            android:id="@+id/action_loginScreen_to_registrationScreen"
+            app:destination="@id/registrationScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationScreen"
+        android:name="com.example.shoppingapp.fragments.RegistrationFragment"
+        android:label="fragment_registration_screen"
+        tools:layout="@layout/fragment_registration_screen" >
+        <action
+            android:id="@+id/action_registrationScreen_to_loginScreen"
+            app:destination="@id/loginScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingScreen"
+        android:name="com.example.shoppingapp.fragments.ShoppingFragment"
+        android:label="fragment_shopping_screen"
+        tools:layout="@layout/fragment_shopping_screen" >
+        <action
+            android:id="@+id/action_shoppingScreen_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.shoppingapp.fragments.CartFragment"
+        android:label="CartFragment" >
+        <action
+            android:id="@+id/action_cartFragment_to_shoppingScreen"
+            app:destination="@id/shoppingScreen" />
+    </fragment>
+</navigation>

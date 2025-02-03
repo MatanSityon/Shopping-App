@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Toolbar with Greeting Text and Cart Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+
+        <!-- Greeting Text -->
+        <TextView
+            android:id="@+id/greetingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingEnd="8dp"
+            android:text="Hello, User"
+            android:textColor="#FF6200EE"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Cart Button -->
+        <ImageButton
+            android:id="@+id/btnCart"
+            style="@android:style/Widget.DeviceDefault.Light.ImageButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="right"
+            android:background="@android:color/transparent"
+            android:contentDescription="Cart"
+            android:src="@drawable/baseline_add_shopping_cart_24" />
+    </LinearLayout>
+
+    <!-- Search Bar -->
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded"
+        android:queryHint="Search items" />
+
+    <!-- RecyclerView for items -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:scrollbars="vertical" />
+
+    <!-- Total Price and Add to Cart Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded"
+        android:orientation="horizontal">
+
+        <!-- Total Price Label -->
+        <TextView
+            android:id="@+id/totalPriceLabel"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="Total Price: $0.00"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Add to Cart Button -->
+        <Button
+            android:id="@+id/btnAddToCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="Add to Cart" />
+
+
+    </LinearLayout>
+</LinearLayout>
