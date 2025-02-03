@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
@@ -10,29 +10,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="horizontal"
         android:paddingBottom="8dp">
 
-        <!-- Greeting Text -->
+        <!-- Greeting Text (Left Aligned) -->
         <TextView
             android:id="@+id/greetingText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="left"
-            android:paddingEnd="8dp"
+            android:layout_weight="1"
+            android:paddingStart="8dp"
             android:text="Hello, User"
             android:textColor="#FF6200EE"
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <!-- Cart Button -->
+        <!-- Cart Button (Right Aligned) -->
         <ImageButton
             android:id="@+id/btnCart"
-            style="@android:style/Widget.DeviceDefault.Light.ImageButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_gravity="right"
             android:background="@android:color/transparent"
             android:contentDescription="Cart"
             android:src="@drawable/baseline_add_shopping_cart_24" />
@@ -43,6 +40,7 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:background="@drawable/rounded"
         android:queryHint="Search items" />
 
@@ -62,14 +60,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded"
+        android:padding="10dp"
         android:orientation="horizontal">
 
-        <!-- Total Price Label -->
+        <!-- Total Price Label (Expandable) -->
         <TextView
             android:id="@+id/totalPriceLabel"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:text="Total Price: $0.00"
             android:textSize="18sp"
@@ -80,9 +78,6 @@
             android:id="@+id/btnAddToCart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
             android:text="Add to Cart" />
-
-
     </LinearLayout>
 </LinearLayout>

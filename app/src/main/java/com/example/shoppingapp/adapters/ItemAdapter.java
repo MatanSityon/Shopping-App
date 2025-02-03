@@ -40,6 +40,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         Item item = filteredItemList.get(position);
 
+        // ✅ Ensure Buttons Do Not Disappear
+        holder.btnAdd.setVisibility(View.VISIBLE);
+        holder.btnRemove.setVisibility(View.VISIBLE);
+
         holder.itemName.setText(item.getName());
         holder.itemDescription.setText(item.getDescription());
         holder.itemPrice.setText(String.format("Price: $%.2f", item.getPrice()));
@@ -52,7 +56,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
         holder.btnAdd.setOnClickListener(v -> {
             item.setQuantity(item.getQuantity() + 1);
-            notifyItemChanged(position);
+            notifyItemChanged(holder.getAdapterPosition(), "update_price");
             if (onPriceChangeListener != null) {
                 onPriceChangeListener.onPriceChange();
             }
@@ -61,12 +65,24 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.btnRemove.setOnClickListener(v -> {
             if (item.getQuantity() > 0) {
                 item.setQuantity(item.getQuantity() - 1);
-                notifyItemChanged(position);
+                notifyItemChanged(holder.getAdapterPosition(), "update_price");
                 if (onPriceChangeListener != null) {
                     onPriceChangeListener.onPriceChange();
                 }
             }
         });
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position, @NonNull List<Object> payloads) {
+        if (!payloads.isEmpty() && payloads.contains("update_price")) {
+            // ✅ Update only quantity & total price without resetting entire UI
+            Item item = filteredItemList.get(position);
+            holder.itemQuantity.setText(String.valueOf(item.getQuantity()));
+            holder.itemTotalPrice.setText(String.format("Total: $%.2f", item.getQuantity() * item.getPrice()));
+        } else {
+            super.onBindViewHolder(holder, position, payloads);
+        }
     }
 
     @Override
